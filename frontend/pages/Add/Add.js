@@ -1,10 +1,11 @@
 import React from "react";
-import { Text, View } from "react-native";
+import { View } from "react-native";
+import Camera from "../../components/Camera/Camera";
 
 const Add = () => {
   return (
     <View>
-      <Text>Add</Text>
+      <Camera />
     </View>
   );
 };
