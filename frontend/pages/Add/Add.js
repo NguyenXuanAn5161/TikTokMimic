@@ -1,10 +1,12 @@
 import React from "react";
-import { Text, View } from "react-native";
+import { View } from "react-native";
+import Camera from "../../components/Camera/Camera";
+import styles from "./AddStyles.js";
 
 const Add = () => {
   return (
-    <View>
-      <Text>Add</Text>
+    <View style={styles.container}>
+      <Camera />
     </View>
   );
 };

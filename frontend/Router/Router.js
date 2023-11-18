@@ -13,7 +13,7 @@ const Tab = createBottomTabNavigator();
 const Router = () => {
   return (
     <Tab.Navigator
-      initialRouteName="Home" // màn hình sẽ hiển thị đầu tiên
+      initialRouteName="Add" // màn hình sẽ hiển thị đầu tiên
       screenOptions={{
         headerShown: false,
         tabBarActiveTintColor: "#fff",
