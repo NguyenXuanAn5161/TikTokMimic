@@ -60,7 +60,7 @@ export const VideoItem = forwardRef((props, parentRef) => {
 
   return (
     <Video
-      ref={ref}
+      ref={ref} // ref này sẽ được truyền vào parentRef ở trên
       style={styles.container}
       source={{
         uri: "https://v.pinimg.com/videos/mc/720p/f6/88/88/f68888290d70aca3cbd4ad9cd3aa732f.mp4",

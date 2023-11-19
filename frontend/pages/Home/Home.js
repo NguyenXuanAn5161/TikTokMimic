@@ -32,7 +32,7 @@ const Home = () => {
         ]}
       >
         <VideoItem
-          ref={(VideoItemRef) => (mediaRefs.current[item] = VideoItemRef)}
+          ref={(VideoItemRef) => (mediaRefs.current[index] = VideoItemRef)}
         />
       </View>
     );
