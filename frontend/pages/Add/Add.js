@@ -1,13 +1,15 @@
 import React from "react";
-import { View } from "react-native";
+import { SafeAreaView, View } from "react-native";
 import Camera from "../../components/Camera/Camera";
 import styles from "./AddStyles.js";
 
 const Add = () => {
   return (
-    <View style={styles.container}>
-      <Camera />
-    </View>
+    <SafeAreaView style={{ flex: 1 }}>
+      <View style={styles.container}>
+        <Camera />
+      </View>
+    </SafeAreaView>
   );
 };
 

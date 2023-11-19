@@ -30,7 +30,7 @@ export default function CameraScreen() {
   // Yêu cầu truy cập cho camera, audio, gallery
   useEffect(() => {
     (async () => {
-      const cameraStatus = await Camera.requestPermissionsAsync();
+      const cameraStatus = await Camera.requestCameraPermissionsAsync();
       setHasCameraPermission(cameraStatus.status === "granted");
 
       const audioStatus = await Audio.requestPermissionsAsync();
