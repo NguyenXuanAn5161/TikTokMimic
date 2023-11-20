@@ -7,22 +7,29 @@ import React, {
 } from "react";
 import styles from "./VideoItemStyles";
 
-export const VideoItem = forwardRef((props, parentRef) => {
+// Sử dụng forwardRef để truy cập ref từ parent component
+export const VideoItem = forwardRef(({ item }, parentRef) => {
+  // Sử dụng useRef để lưu trữ tham chiếu đến đối tượng Video
   const ref = useRef(null);
+  useEffect(() => {
+    console.log("videos items", item);
+  }, [item]);
+  // Sử dụng useImperativeHandle để chia sẻ các phương thức từ component con lên component cha
   useImperativeHandle(parentRef, () => ({ play, stop, unload }));
 
+  // Sử dụng useEffect để thực hiện một số công việc khi component unmount
   useEffect(() => {
     return () => unload();
   }, []);
 
+  // Phương thức play để bắt đầu phát video
   const play = async () => {
     if (ref.current == null) {
       return;
     }
     const status = await ref.current.getStatusAsync();
     if (status?.isPlaying) {
-      // thuật ngữ Optional Chaining
-      return;
+      return; // Kiểm tra nếu video đang phát thì không làm gì cả
     }
     try {
       await ref.current.playAsync();
@@ -31,13 +38,14 @@ export const VideoItem = forwardRef((props, parentRef) => {
     }
   };
 
+  // Phương thức stop để dừng phát video
   const stop = async () => {
     if (ref.current == null) {
       return;
     }
     const status = await ref.current.getStatusAsync();
     if (!status?.isPlaying) {
-      return;
+      return; // Kiểm tra nếu video không phát thì không làm gì cả
     }
     try {
       await ref.current.stopAsync();
@@ -46,6 +54,7 @@ export const VideoItem = forwardRef((props, parentRef) => {
     }
   };
 
+  // Phương thức unload để giải phóng tài nguyên khi component unmount
   const unload = async () => {
     console.log("unload");
     if (ref.current == null) {
@@ -58,16 +67,17 @@ export const VideoItem = forwardRef((props, parentRef) => {
     }
   };
 
+  // Render component Video với các thuộc tính và phương thức đã được định nghĩa
   return (
     <Video
       ref={ref} // ref này sẽ được truyền vào parentRef ở trên
       style={styles.container}
       source={{
-        uri: "https://v.pinimg.com/videos/mc/720p/f6/88/88/f68888290d70aca3cbd4ad9cd3aa732f.mp4",
+        uri: item.video_url,
       }}
       resizeMode={ResizeMode.CONTAIN}
-      shouldPlay={true}
-      isLooping
+      shouldPlay // Không phát tự động khi mount
+      isLooping // Lặp lại video
     />
   );
 });
