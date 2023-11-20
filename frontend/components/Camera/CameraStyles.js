@@ -22,7 +22,7 @@ const styles = StyleSheet.create({
     marginHorizontal: 30,
   },
   recordButton: {
-    borderWidth: "8px",
+    borderWidth: 8,
     borderColor: "#832121",
     backgroundColor: "#ff4040",
     borderRadius: 100,

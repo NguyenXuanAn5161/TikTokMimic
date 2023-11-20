@@ -1,12 +1,11 @@
 import React from "react";
 import { Text, View } from "react-native";
+import styles from "./Userstyles.js";
 
-const User = () => {
+export default function User() {
   return (
-    <View>
+    <View style={styles.container}>
       <Text>User</Text>
     </View>
   );
-};
-
-export default User;
+}
