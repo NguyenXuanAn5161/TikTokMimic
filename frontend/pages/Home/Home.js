@@ -42,6 +42,7 @@ const Home = () => {
   // }, []);
 
   // Hàm xử lý sự kiện khi các item trong danh sách thay đổi hiển thị
+  // Hàm xử lý sự kiện khi các item trong danh sách thay đổi hiển thị
   const onViewableItemsChanged = useRef(({ changed }) => {
     changed.forEach((element) => {
       const cell = mediaRefs.current[element.key];

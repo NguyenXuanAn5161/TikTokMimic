@@ -5,15 +5,14 @@ import React, {
   useImperativeHandle,
   useRef,
 } from "react";
+import InfoVideoItem from "../InfoVideoItem/InfoVideoItem";
 import styles from "./VideoItemStyles";
 
 // Sử dụng forwardRef để truy cập ref từ parent component
 export const VideoItem = forwardRef(({ item }, parentRef) => {
   // Sử dụng useRef để lưu trữ tham chiếu đến đối tượng Video
   const ref = useRef(null);
-  useEffect(() => {
-    console.log("videos items", item);
-  }, [item]);
+
   // Sử dụng useImperativeHandle để chia sẻ các phương thức từ component con lên component cha
   useImperativeHandle(parentRef, () => ({ play, stop, unload }));
 
@@ -56,7 +55,7 @@ export const VideoItem = forwardRef(({ item }, parentRef) => {
 
   // Phương thức unload để giải phóng tài nguyên khi component unmount
   const unload = async () => {
-    console.log("unload");
+    console.log("unload", item.id);
     if (ref.current == null) {
       return;
     }
@@ -69,16 +68,20 @@ export const VideoItem = forwardRef(({ item }, parentRef) => {
 
   // Render component Video với các thuộc tính và phương thức đã được định nghĩa
   return (
-    <Video
-      ref={ref} // ref này sẽ được truyền vào parentRef ở trên
-      style={styles.container}
-      source={{
-        uri: item.video_url,
-      }}
-      resizeMode={ResizeMode.CONTAIN}
-      shouldPlay // Không phát tự động khi mount
-      isLooping // Lặp lại video
-    />
+    <>
+      <InfoVideoItem item={item} />
+      <Video
+        ref={ref} // ref này sẽ được truyền vào parentRef ở trên
+        style={styles.container}
+        source={{
+          uri: item.video_url,
+        }}
+        resizeMode={ResizeMode.CONTAIN}
+        shouldPlay={true} // Không phát tự động khi mount
+        isLooping // Lặp lại video
+        isMuted={false}
+      />
+    </>
   );
 });
 
