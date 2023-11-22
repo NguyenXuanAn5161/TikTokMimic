@@ -99,8 +99,8 @@ const HomeTabs = () => {
   const Router = () => {
     return (
       <Stack.Navigator>
-        <Stack.Screen name="HomeTabs" component={HomeTabs} options={{headerShown: false}}/>
-        <Stack.Screen name="SavePost" component={savePost} />
+        <Stack.Screen name="HomeTabs" component={HomeTabs} options={{headerShown: false}} />
+        <Stack.Screen name="SavePost" component={savePost} options={{headerShown: false}} />
       </Stack.Navigator>
     );
   };

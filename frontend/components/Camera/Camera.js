@@ -37,7 +37,7 @@ export default function CameraScreen() {
       const audioStatus = await Audio.requestPermissionsAsync();
       setHasAudioPermission(audioStatus.status === "granted");
 
-      const galleryStatus =
+      const galleryStatus = 
         await ImagePicker.requestMediaLibraryPermissionsAsync();
       setHasGalleryPermission(galleryStatus.status === "granted");
 
