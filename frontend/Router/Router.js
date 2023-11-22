@@ -8,13 +8,15 @@ import Home from "../pages/Home/Home";
 import Message from "../pages/Message/Message";
 import Shop from "../pages/Shop/Shop";
 import User from "../pages/User/User";
+import savePost from "../components/savePost/savePost";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
 const Tab = createBottomTabNavigator();
+const Stack = createNativeStackNavigator();
 
-const Router = () => {
-  return (
-    <SafeAreaView style={{ flex: 1, marginHorizontal: 5 }}>
-      <Tab.Navigator
+const HomeTabs = () => {
+  return(
+    <Tab.Navigator
         initialRouteName="Home" // màn hình sẽ hiển thị đầu tiên
         screenOptions={{
           headerShown: false,
@@ -90,8 +92,18 @@ const Router = () => {
           }}
         />
       </Tab.Navigator>
-    </SafeAreaView>
-  );
+  )
+      
 };
+
+  const Router = () => {
+    return (
+      <Stack.Navigator>
+        <Stack.Screen name="HomeTabs" component={HomeTabs} options={{headerShown: false}}/>
+        <Stack.Screen name="SavePost" component={savePost} />
+      </Stack.Navigator>
+    );
+  };
+
 
 export default Router;
