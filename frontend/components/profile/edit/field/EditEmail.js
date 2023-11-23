@@ -7,13 +7,13 @@ import { Text, TextInput, View } from 'react-native'
 import { useNavigation } from '@react-navigation/native'
 
 export default function EditField({ route }) {
-  const {title, value, setCurrentUser} = route.params;
+  const {title, value, setEmail} = route.params;
   const [inputValue, setInputValue] = useState(value);
   const navigation = useNavigation();
 
   const onSave = () => {
     console.log('Save');
-    setCurrentUser(inputValue);
+    setEmail(inputValue);
     navigation.goBack();
   }
 

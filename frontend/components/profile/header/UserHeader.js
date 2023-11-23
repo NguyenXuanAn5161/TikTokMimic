@@ -5,7 +5,7 @@ import { Avatar } from 'react-native-paper'
 import { Feather } from '@expo/vector-icons'
 import { useNavigation } from '@react-navigation/native'
 
-export default function UserHeader({ currentUser }) {
+export default function UserHeader({ currentUser, setCurrentUser }) {
   const navigation = useNavigation();
   const [email, setEmail]= useState("xuanan@gmail.com")
   return (
@@ -30,7 +30,7 @@ export default function UserHeader({ currentUser }) {
       </View>
       
       <TouchableOpacity style={styles.buttonStyles}
-                        onPress={() => navigation.navigate("EditProfile", {currentUser})}>
+                        onPress={() => navigation.navigate("EditProfile", {currentUser, setCurrentUser , email, setEmail})}>
           <Text>Edit Profile</Text>
       </TouchableOpacity>
 

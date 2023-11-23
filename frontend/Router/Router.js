@@ -12,6 +12,7 @@ import savePost from "../components/savePost/savePost";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import EditProfile from "../components/profile/edit/EditProfile"; 
 import EditField from "../components/profile/edit/field/EditField";
+import EditEmail from "../components/profile/edit/field/EditEmail";
 
 const Tab = createBottomTabNavigator();
 const Stack = createNativeStackNavigator();
@@ -105,6 +106,7 @@ const HomeTabs = () => {
         <Stack.Screen name="SavePost" component={savePost} options={{headerShown: false}} />
         <Stack.Screen name="EditProfile" component={EditProfile} options={{headerShown: false}}/>
         <Stack.Screen name="EditField" component={EditField} options={{headerShown: false}} />
+        <Stack.Screen name="EditEmail" component={EditEmail} options={{headerShown: false}} />
       </Stack.Navigator>
     );
   };

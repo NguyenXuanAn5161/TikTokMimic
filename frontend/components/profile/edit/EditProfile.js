@@ -8,7 +8,10 @@ import * as ImagePicker from 'expo-image-picker';
 import { useNavigation } from '@react-navigation/native';
 
 export default function EditProfile({ route}) {
-  const { currentUser } = route.params;
+  const { currentUser, setCurrentUser } = route.params;
+
+  const { email, setEmail } = route.params;
+  
   
   const navigation = useNavigation();
 
@@ -54,7 +57,7 @@ export default function EditProfile({ route}) {
       <View style={styles.fieldsContainer}>
         <TouchableOpacity
           style={styles.fieldItemContainer}
-          onPress={() => navigation.navigate('EditField', {title: 'Display Name', value: currentUser})}
+          onPress={() => navigation.navigate('EditField', {title: 'Display Name', value: currentUser, setCurrentUser})}
         >
           <Text>Display Name</Text>
           <View style={styles.fieldValueContainer}>
@@ -62,7 +65,22 @@ export default function EditProfile({ route}) {
             <Feather name='chevron-right' size={20} color='gray' />
           </View>
         </TouchableOpacity>
+
+        <View style={{marginBottom: 30}}></View>
+
+        <TouchableOpacity
+          style={styles.fieldItemContainer}
+          onPress={() => navigation.navigate('EditEmail', {title: 'Display Email', value: email, setEmail})}
+        >
+          <Text>Email</Text>
+          <View style={styles.fieldValueContainer}>
+            <Text>{email}</Text>
+            <Feather name='chevron-right' size={20} color='gray' />
+          </View>
+        </TouchableOpacity>
       </View>
+
+       
     </SafeAreaView>
   );
 }
