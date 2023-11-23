@@ -13,6 +13,7 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import EditProfile from "../components/profile/edit/EditProfile"; 
 import EditField from "../components/profile/edit/field/EditField";
 import EditEmail from "../components/profile/edit/field/EditEmail";
+import VideoDetail from "../components/VideoItem/VideoDetail";
 
 const Tab = createBottomTabNavigator();
 const Stack = createNativeStackNavigator();
@@ -107,6 +108,7 @@ const HomeTabs = () => {
         <Stack.Screen name="EditProfile" component={EditProfile} options={{headerShown: false}}/>
         <Stack.Screen name="EditField" component={EditField} options={{headerShown: false}} />
         <Stack.Screen name="EditEmail" component={EditEmail} options={{headerShown: false}} />
+        <Stack.Screen name="VideoDetail" component={VideoDetail} options={{headerShown: false}} />
       </Stack.Navigator>
     );
   };

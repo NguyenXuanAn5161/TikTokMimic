@@ -51,10 +51,10 @@ export default function UserHeader({ currentUser, setCurrentUser }) {
             <Feather name="heart" size={20} />
           </TouchableOpacity>
         </View>
-
+    
         
 
-        
+
       </View>
     </View>
   )
