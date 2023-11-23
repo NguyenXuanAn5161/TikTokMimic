@@ -62,6 +62,11 @@ const styles = StyleSheet.create({
         color: 'white',
         fontSize: 16
     },
+    uploadingContainer:{
+        flex: 1,
+        alignItems: 'center',
+        justifyContent: 'center',
+    }
 });
 
 export default styles;

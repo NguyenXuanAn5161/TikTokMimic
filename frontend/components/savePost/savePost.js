@@ -1,12 +1,33 @@
-import { View, Text, TextInput, Image, TouchableOpacity } from 'react-native'
+import { View, Text, TextInput, Image, TouchableOpacity, ActivityIndicator } from 'react-native'
 import React, { useState } from 'react'
 import styles from './savePostStyles'
 import { useNavigation } from '@react-navigation/native'
 import { Feather } from '@expo/vector-icons'
 
 export default function savePost(props) {
+    const [requestRunning, setRequestRunning] = useState(false) 
     const [descrition, setDescrition] = useState('')
     const navigation = useNavigation();
+
+
+    const handleSavePost = async () => {
+        setRequestRunning(true);
+      
+        // Giả lập một đợi trong 2 giây
+        await new Promise(resolve => setTimeout(resolve, 2000));
+      
+        setRequestRunning(false);
+        navigation.goBack();
+      };
+
+    if(requestRunning) {
+        return (
+            <View style={styles.uploadingContainer}>
+                <ActivityIndicator size="large" color="red" />
+            </View>
+        )
+    }
+
     return (
         <View style={styles.container}>
             <View style={styles.formContainer}>
@@ -32,7 +53,7 @@ export default function savePost(props) {
                 </TouchableOpacity>
 
                 <TouchableOpacity
-                    onPress={() => navigation.goBack()}
+                    onPress={() => handleSavePost()}
                     style={styles.postButton}>
                     <Feather name='corner-left-up' size={24} color="white" />
                     <Text style={styles.postButtonText}>Post</Text>

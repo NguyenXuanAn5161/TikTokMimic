@@ -3,8 +3,10 @@ import React, { useState } from 'react'
 import styles from './UserHeaderStyles'
 import { Avatar } from 'react-native-paper'
 import { Feather } from '@expo/vector-icons'
+import { useNavigation } from '@react-navigation/native'
 
 export default function UserHeader() {
+  const navigation = useNavigation();
   const [email, setEmail]= useState("xuanan@gmail.com")
   return (
     <View style={styles.container}>
