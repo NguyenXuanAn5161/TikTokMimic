@@ -29,7 +29,8 @@ export default function UserHeader() {
           </View>
       </View>
       
-      <TouchableOpacity style={styles.buttonStyles}>
+      <TouchableOpacity style={styles.buttonStyles}
+                        onPress={() => navigation.navigate("EditProfile")}>
           <Text>Edit Profile</Text>
       </TouchableOpacity>
 

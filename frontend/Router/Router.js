@@ -2,7 +2,7 @@ import { AntDesign, MaterialCommunityIcons } from "@expo/vector-icons";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import * as React from "react";
 import { Image } from "react-native";
-import { SafeAreaView } from "react-native-safe-area-context";
+
 import Add from "../pages/Add/Add";
 import Home from "../pages/Home/Home";
 import Message from "../pages/Message/Message";
@@ -10,6 +10,7 @@ import Shop from "../pages/Shop/Shop";
 import User from "../pages/User/User";
 import savePost from "../components/savePost/savePost";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import EditProfile from "../components/profile/edit/EditProfile"; 
 
 const Tab = createBottomTabNavigator();
 const Stack = createNativeStackNavigator();
@@ -101,6 +102,7 @@ const HomeTabs = () => {
       <Stack.Navigator>
         <Stack.Screen name="HomeTabs" component={HomeTabs} options={{headerShown: false}} />
         <Stack.Screen name="SavePost" component={savePost} options={{headerShown: false}} />
+        <Stack.Screen name="EditProfile" component={EditProfile} options={{headerShown: false}} />
       </Stack.Navigator>
     );
   };

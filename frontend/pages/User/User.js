@@ -3,6 +3,7 @@ import { SafeAreaView, Text, View } from "react-native";
 import styles from "./Userstyles.js";
 import UserNavbar from "../../components/profile/navbar/UserNavbar.js";
 import UserHeader from "../../components/profile/header/UserHeader.js";
+import PostList from "../../components/profile/postList/PostList.js";
 
 export default function User() {
  
@@ -11,6 +12,7 @@ export default function User() {
       <View style={styles.container}>
         <UserNavbar />
         <UserHeader />
+        <PostList />
       </View>
     </SafeAreaView>
   );
