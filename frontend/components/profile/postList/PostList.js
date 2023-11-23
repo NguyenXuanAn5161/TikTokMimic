@@ -2,6 +2,7 @@ import { View, Text, FlatList } from 'react-native'
 import React, { useEffect, useState } from 'react'
 import PostListItem from './item/PostListItem';
 
+// Ket noi voi mock api va hien thi danh sach cac video co trong mock api
 export default function PostList() {
     const [postData, setPostData] = useState([]);
 

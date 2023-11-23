@@ -11,6 +11,7 @@ import User from "../pages/User/User";
 import savePost from "../components/savePost/savePost";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import EditProfile from "../components/profile/edit/EditProfile"; 
+import EditField from "../components/profile/edit/field/EditField";
 
 const Tab = createBottomTabNavigator();
 const Stack = createNativeStackNavigator();
@@ -100,9 +101,10 @@ const HomeTabs = () => {
   const Router = () => {
     return (
       <Stack.Navigator>
-        <Stack.Screen name="HomeTabs" component={HomeTabs} options={{headerShown: false}} />
+        <Stack.Screen name="HomeTabs" component={HomeTabs} options={{headerShown: false}}  />
         <Stack.Screen name="SavePost" component={savePost} options={{headerShown: false}} />
-        <Stack.Screen name="EditProfile" component={EditProfile} options={{headerShown: false}} />
+        <Stack.Screen name="EditProfile" component={EditProfile} options={{headerShown: false}}/>
+        <Stack.Screen name="EditField" component={EditField} options={{headerShown: false}} />
       </Stack.Navigator>
     );
   };

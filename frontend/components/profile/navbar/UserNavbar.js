@@ -2,9 +2,9 @@ import React, { useState } from 'react'
 import { Text, TouchableOpacity, View } from 'react-native'
 import styles from './UserNavbarStyles'
 import { Feather } from '@expo/vector-icons'
+import EditProfile from '../edit/EditProfile';
 
-export default function UserNavbar() {
-    const [currentUser, setCurrentUser] = useState("Xuan an");
+export default function UserNavbar({ currentUser }) {  
   return (
     <View style={styles.container}>
         {/* nut search  */}
@@ -19,6 +19,8 @@ export default function UserNavbar() {
       <TouchableOpacity>
         <Feather name="menu" size={20} />
       </TouchableOpacity>
+
+      
     </View>
   )
 }

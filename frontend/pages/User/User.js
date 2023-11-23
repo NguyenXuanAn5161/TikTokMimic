@@ -6,12 +6,12 @@ import UserHeader from "../../components/profile/header/UserHeader.js";
 import PostList from "../../components/profile/postList/PostList.js";
 
 export default function User() {
- 
+  const [currentUser, setCurrentUser] = useState("Xuan An");
   return (
     <SafeAreaView style={{ flex: 1 }}>
       <View style={styles.container}>
-        <UserNavbar />
-        <UserHeader />
+        <UserNavbar currentUser={currentUser} />
+        <UserHeader currentUser={currentUser} />
         <PostList />
       </View>
     </SafeAreaView>
