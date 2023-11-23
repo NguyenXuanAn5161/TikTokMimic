@@ -5,7 +5,7 @@ import { Avatar } from 'react-native-paper'
 import { Feather } from '@expo/vector-icons'
 import { useNavigation } from '@react-navigation/native'
 
-export default function UserHeader({ currentUser, setCurrentUser }) {
+export default function UserHeader({ currentUser, setCurrentUser, setContentToShow}) {
   const navigation = useNavigation();
   const [email, setEmail]= useState("xuanan@gmail.com")
   return (
@@ -36,7 +36,7 @@ export default function UserHeader({ currentUser, setCurrentUser }) {
 
       <View style={styles.buttonChoose}>
         <View style={styles.counterItemContainer}>
-          <TouchableOpacity>
+          <TouchableOpacity onPress={() => setContentToShow("posts")}>
             <Feather name="bar-chart-2" size={20} />
           </TouchableOpacity>
         </View>
@@ -47,7 +47,7 @@ export default function UserHeader({ currentUser, setCurrentUser }) {
         </View>
 
         <View style={styles.counterItemContainer}>
-          <TouchableOpacity>
+          <TouchableOpacity onPress={() => setContentToShow("likes")}>
             <Feather name="heart" size={20} />
           </TouchableOpacity>
         </View>
