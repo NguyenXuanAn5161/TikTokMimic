@@ -5,7 +5,9 @@ import thunk from "redux-thunk";
 import Router from "./Router/Router";
 import Reducers from "./redux/reducers/Reducers";
 
+
 const store = createStore(Reducers, applyMiddleware(thunk));
+
 
 export default function App() {
   return (

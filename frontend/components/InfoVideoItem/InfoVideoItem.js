@@ -4,14 +4,73 @@ import {
   FontAwesome,
   MaterialCommunityIcons,
 } from "@expo/vector-icons";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Image, Text, View } from "react-native";
 import styles from "./InfoVideoItemStyles";
+import { useNavigation } from "@react-navigation/native";
+import axios from 'axios';
 
 export default function InfoVideoItem({ item }) {
+  const [liked, setLiked] = useState(false);
+  const [likesCount, setLikesCount] = useState(item.likes);
+  const navigation = useNavigation(); // Sử dụng useNavigation để lấy navigation prop
+
   useEffect(() => {
     console.log("InfoVideoItem: ", item.avatar);
   }, [item]);
+
+  const handleLikePress = async () => {
+    console.log("Before like press - likesCount:", likesCount, "liked:", liked);
+  
+    if (liked) {
+      updateVideoLikes(item.id, likesCount - 1);
+      try {
+        // Gửi yêu cầu DELETE lên mock API để xóa dữ liệu video
+        await axios.delete(`https://655f6570879575426b454270.mockapi.io/VideoLiked/${item.id}`);
+
+        console.log('Dữ liệu của video đã được xóa khỏi mock API thành công.');
+      } catch (error) {
+        console.error('Đã xảy ra lỗi khi xóa dữ liệu video khỏi mock API:', error.message);
+      }
+    } else {
+      updateVideoLikes(item.id, likesCount + 1);
+      try {
+        // Gửi yêu cầu POST lên mock API để cập nhật dữ liệu
+        await axios.post('https://655f6570879575426b454270.mockapi.io/VideoLiked', {
+          id: item.id,
+          username: item.username,
+          hastag: item.hastag,
+          musicname: item.musicname,
+          likes: item.likes + 1,
+          comments: item.comments,
+          avatar: item.avatar,
+          caption: item.caption,
+          video_url: item.video_url,
+          shares: item.shares,
+          bookmarks: item.bookmarks,
+          musicavatar: item.musicavatar,
+          liked: true, // Trạng thái thích
+        });
+  
+        console.log('Dữ liệu của video đã được đưa lên mock API thành công.');
+      } catch (error) {
+        console.error('Đã xảy ra lỗi khi đưa dữ liệu video lên mock API:', error.message);
+      }
+    }
+  
+    // Sử dụng hàm callback của setState
+    setLiked((prevLiked) => !prevLiked);
+    setLikesCount((prevCount) => (liked ? prevCount - 1 : prevCount + 1));
+  
+    console.log("After like press - likesCount:", likesCount, "liked:", liked);
+
+    
+  }
+
+  const updateVideoLikes = (videoId, likesCount) => {
+    console.log(`Updating likes for video ${videoId} to ${likesCount}`);
+    // ... (rest of the function)
+  };
   return (
     <View style={styles.container}>
       <View style={styles.rightContainer}>
@@ -20,9 +79,12 @@ export default function InfoVideoItem({ item }) {
             <Image source={{ uri: item.avatar }} style={styles.userImage} />
           ) : null}
         </View>
-        <View style={[styles.likes, styles.info]}>
-          <AntDesign name="heart" size={40} color="white" />
-          <Text style={{ color: "white" }}>{item.likes}</Text>
+        <View style={[styles.info]}>
+          <AntDesign  name={liked ? "heart" : "hearto"}
+          size={40}
+          color={liked ? "red" : "white"}
+          onPress={handleLikePress}/>
+          <Text style={{ color: "white" }}>{likesCount}</Text>
         </View>
         <View style={[styles.comments, styles.info]}>
           <FontAwesome name="commenting-o" size={40} color="white" />

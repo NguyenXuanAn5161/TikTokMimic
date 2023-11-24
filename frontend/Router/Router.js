@@ -2,19 +2,25 @@ import { AntDesign, MaterialCommunityIcons } from "@expo/vector-icons";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import * as React from "react";
 import { Image } from "react-native";
-import { SafeAreaView } from "react-native-safe-area-context";
+
 import Add from "../pages/Add/Add";
 import Home from "../pages/Home/Home";
 import Message from "../pages/Message/Message";
 import Shop from "../pages/Shop/Shop";
 import User from "../pages/User/User";
+import savePost from "../components/savePost/savePost";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import EditProfile from "../components/profile/edit/EditProfile"; 
+import EditField from "../components/profile/edit/field/EditField";
+import EditEmail from "../components/profile/edit/field/EditEmail";
+import VideoDetail from "../components/VideoItem/VideoDetail";
 
 const Tab = createBottomTabNavigator();
+const Stack = createNativeStackNavigator();
 
-const Router = () => {
-  return (
-    <SafeAreaView style={{ flex: 1, marginHorizontal: 5 }}>
-      <Tab.Navigator
+const HomeTabs = () => {
+  return(
+    <Tab.Navigator
         initialRouteName="Home" // màn hình sẽ hiển thị đầu tiên
         screenOptions={{
           headerShown: false,
@@ -90,8 +96,22 @@ const Router = () => {
           }}
         />
       </Tab.Navigator>
-    </SafeAreaView>
-  );
+  )
+      
 };
+
+  const Router = () => {
+    return (
+      <Stack.Navigator>
+        <Stack.Screen name="HomeTabs" component={HomeTabs} options={{headerShown: false}}  />
+        <Stack.Screen name="SavePost" component={savePost} options={{headerShown: false}} />
+        <Stack.Screen name="EditProfile" component={EditProfile} options={{headerShown: false}}/>
+        <Stack.Screen name="EditField" component={EditField} options={{headerShown: false}} />
+        <Stack.Screen name="EditEmail" component={EditEmail} options={{headerShown: false}} />
+        <Stack.Screen name="VideoDetail" component={VideoDetail} options={{headerShown: false}} />
+      </Stack.Navigator>
+    );
+  };
+
 
 export default Router;

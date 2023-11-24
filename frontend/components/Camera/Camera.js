@@ -8,6 +8,7 @@ import React, { useEffect, useState } from "react";
 import { Image, Text, TouchableOpacity, View } from "react-native";
 import styles from "./CameraStyles";
 
+
 export default function CameraScreen() {
   // Trạng thái truy cập cho camera, audio, gallery
   const [hasCameraPermission, setHasCameraPermission] = useState(false);
@@ -36,7 +37,7 @@ export default function CameraScreen() {
       const audioStatus = await Audio.requestPermissionsAsync();
       setHasAudioPermission(audioStatus.status === "granted");
 
-      const galleryStatus =
+      const galleryStatus = 
         await ImagePicker.requestMediaLibraryPermissionsAsync();
       setHasGalleryPermission(galleryStatus.status === "granted");
 
@@ -65,7 +66,7 @@ export default function CameraScreen() {
           const source = data.uri;
           // Tạo thumbnail và chuyển hướng đến màn hình lưu bài đăng
           let sourceThumb = await generateThumbnail(source);
-          navigation.navigate("savePost", { source, sourceThumb });
+          navigation.navigate("SavePost", { source, sourceThumb });
         }
       } catch (error) {
         console.warn(error);
@@ -91,7 +92,7 @@ export default function CameraScreen() {
     if (!result.cancelled) {
       // Tạo thumbnail và chuyển hướng đến màn hình lưu bài đăng
       let sourceThumb = await generateThumbnail(result.uri);
-      navigation.navigate("savePost", { source: result.uri, sourceThumb });
+      navigation.navigate("SavePost", { source: result.uri, sourceThumb });
     }
   };
 
