@@ -72,6 +72,7 @@ export const VideoDetail = forwardRef(({ item }, parentRef) => {
   // Render component Video với các thuộc tính và phương thức đã được định nghĩa
   return (
     <>
+      <InfoVideoItem item={item} />
       <Video
         ref={ref} // ref này sẽ được truyền vào parentRef ở trên
         style={styles.container}
