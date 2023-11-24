@@ -4,6 +4,7 @@ import * as React from "react";
 import { Image } from "react-native";
 
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context";
 import VideoDetail from "../components/VideoItem/VideoDetail";
 import EditProfile from "../components/profile/edit/EditProfile";
 import EditEmail from "../components/profile/edit/field/EditEmail";
@@ -93,38 +94,42 @@ const HomeTabs = () => {
 
 const Router = () => {
   return (
-    <Stack.Navigator>
-      <Stack.Screen
-        name="HomeTabs"
-        component={HomeTabs}
-        options={{ headerShown: false }}
-      />
-      <Stack.Screen
-        name="SavePost"
-        component={savePost}
-        options={{ headerShown: false }}
-      />
-      <Stack.Screen
-        name="EditProfile"
-        component={EditProfile}
-        options={{ headerShown: false }}
-      />
-      <Stack.Screen
-        name="EditField"
-        component={EditField}
-        options={{ headerShown: false }}
-      />
-      <Stack.Screen
-        name="EditEmail"
-        component={EditEmail}
-        options={{ headerShown: false }}
-      />
-      <Stack.Screen
-        name="VideoDetail"
-        component={VideoDetail}
-        options={{ headerShown: false }}
-      />
-    </Stack.Navigator>
+    <SafeAreaProvider>
+      <SafeAreaView style={{ flex: 1, backgroundColor: "#000" }}>
+        <Stack.Navigator>
+          <Stack.Screen
+            name="HomeTabs"
+            component={HomeTabs}
+            options={{ headerShown: false }}
+          />
+          <Stack.Screen
+            name="SavePost"
+            component={savePost}
+            options={{ headerShown: false }}
+          />
+          <Stack.Screen
+            name="EditProfile"
+            component={EditProfile}
+            options={{ headerShown: false }}
+          />
+          <Stack.Screen
+            name="EditField"
+            component={EditField}
+            options={{ headerShown: false }}
+          />
+          <Stack.Screen
+            name="EditEmail"
+            component={EditEmail}
+            options={{ headerShown: false }}
+          />
+          <Stack.Screen
+            name="VideoDetail"
+            component={VideoDetail}
+            options={{ headerShown: false }}
+          />
+        </Stack.Navigator>
+      </SafeAreaView>
+    </SafeAreaProvider>
   );
 };
 
